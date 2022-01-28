@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import '../design/Row.css'
-import axios from './axios'
+import axios from '../axios'
 import YouTube from "react-youtube"
 import movieTrailer from 'movie-trailer';
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
-function Row({ title, fetchUrl, isLargeRow }) {
-    const [movies, setMovies] = useState([]);
+function Row(props) {
+
+    // destructuring the props (props dealing)
+    const { title, fetchUrl, isLargeRow } = props;
+
+    const [movies, setmovies] = useState([]);
     const [trailerUrl, setTrailerUrl] = useState("");
 
-    useEffect(() => {
+    // a snippet of code which runs on a specific conditions / variable
+     useEffect(() => {
+        // if [] -> means the useEffect run once when the row loads and dont run again
+        // otherwise it will run as many times as the mentioned variable
+
+        // as this is a spi call, so this might takes time so we have to wait so, thats why we have used async function
         async function fetchData() {
             // console.log('abc');
             // console.log(fetchUrl);
             const request = await axios.get(fetchUrl);
             // console.log(request.data.results);
-            setMovies(request.data.results);
+            setmovies(request.data.results);
             return request;
         }
         fetchData();
@@ -47,6 +56,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
         <div className='row'>
             <h2>{title}</h2>
 
+            {/* poster_path, backdrop_path are all the properties of a particular movie */}
             <div className="row_posters">
                 {movies.map(movie => (
                     <img

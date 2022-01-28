@@ -3,7 +3,7 @@ import './design/App.css';
 import { Banner } from './components/Banner';
 import Nav from './components/Nav';
 import Row from './components/Row';
-import requests from './components/requests';
+import requests from './requests';
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
       <Nav />
       <Banner />
 
-      <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginal}
-        isLargeRow />
-      <Row title="Trending Now" fetchUrl={requests.fetchPopular} />
+      {/* using row component to show all the different categories */}
+      <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginal} isLargeRow />
+      <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
       <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
       <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
       <Row title="Comedy movies" fetchUrl={requests.fetchComedyMovies} />

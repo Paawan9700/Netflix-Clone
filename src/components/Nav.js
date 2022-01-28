@@ -5,10 +5,12 @@ import '../design/Nav.css';
 
 
 const Nav = () => {
-
+    // usestate to black in navbar or not 
     const [show, setshow] = useState(false);
 
     useEffect(() => {
+        // as soon as the scroll length increases 100, navbar moved to be transparent
+        // addEventListener (javascript function to call a particular thing and callback function)
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 setshow(true);
@@ -17,7 +19,6 @@ const Nav = () => {
                 setshow(false);
             }
         })
-
         return () => {
             window.removeEventListener('scroll');
         }
