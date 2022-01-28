@@ -66,6 +66,8 @@ function Row(props) {
                         src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
                 ))}
             </div>
+            
+            {/* react you tube trailer package to just pop up movie tralers */}
             {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
         </div>
     )
